@@ -39,6 +39,8 @@ def MissingValues(data):
         100 * missing_values["NumberMissing"] / len(data), 2
     )
 
+    missing_values = missing_values.sort_values(by="PercentageMissing", ascending=False)
+
     return missing_values
 
 
