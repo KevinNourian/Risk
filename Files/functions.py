@@ -263,7 +263,7 @@ def create_plot_mi_scores(features, mi_scores):
     scores = pd.Series(mi_scores, name="MI Scores", index=features.columns)
     scores = scores.sort_values(ascending=False)
 
-    plt.figure(figsize=(15, 6))
+    plt.figure(figsize=(30, 10))
     scores.plot(kind="line", marker="o")
 
     plt.grid(True, which="both", linestyle="--", linewidth=0.5)
@@ -481,8 +481,6 @@ def spearman_correlation(data, target):
     spearman_df = spearman_df.sort_values(by="Spearman Correlation", ascending=False)
 
     print(spearman_df)
-    print("Most Positive Correlations:\n", spearman_df.head(7))
-    print("\nMost Negative Correlations:\n", spearman_df.tail(7))
 
 
 def shape_of_data(data):
