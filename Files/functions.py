@@ -26,18 +26,26 @@ params = {
 }
 
 
+import pandas as pd
+import numpy as np
+
+
 def MissingValues(data):
     """
     Calculates the number and percentage of missing values for each column in a DataFrame.
     """
 
     name_cols = data.columns[data.isna().any()].tolist()
+
     missing_values = pd.DataFrame(
         data[name_cols].isna().sum(), columns=["NumberMissing"]
     )
+
     missing_values["PercentageMissing"] = np.round(
         100 * missing_values["NumberMissing"] / len(data), 2
     )
+
+    missing_values["DataType"] = data[name_cols].dtypes
 
     missing_values = missing_values.sort_values(by="PercentageMissing", ascending=False)
 
