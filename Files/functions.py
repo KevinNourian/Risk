@@ -54,7 +54,7 @@ def MissingValues(data):
 
 def UniqueValues(data):
     """
-    Prints the number of unique values for each categorical column in the DataFrame.
+    Displays the number of unique values for each categorical column in the DataFrame.
     """
 
     categorical_columns_list = data.select_dtypes(include=["object"]).columns.tolist()
@@ -64,12 +64,12 @@ def UniqueValues(data):
         unique_values_dic[column] = data[column].nunique()
 
     for column, values in unique_values_dic.items():
-        print(f"Unique Values in {column}: {values}")
+        print(f"{column}: {values}")
 
 
 def duplicates(data):
     """
-    Prints the number and percentage of duplicate rows in the DataFrame.
+    Displays the number and percentage of duplicate rows in the DataFrame.
     """
 
     print(
@@ -79,7 +79,7 @@ def duplicates(data):
 
 def outliers(data):
     """
-    Prints the count of outliers in each numerical column of the DataFrame based on the IQR method.
+    Displays the count of outliers in each numerical column of the DataFrame based on the IQR method.
     """
 
     numeric_data = data.select_dtypes(include=["number"])
@@ -127,6 +127,23 @@ def countplot(data, x, hue, palette, order, title, x_label, y_label, legend_titl
     plt.ylabel(y_label)
     plt.xticks(rotation=45)
     plt.legend(title=legend_title)
+    plt.tight_layout()
+
+    plt.show()
+
+
+def histplot(data, column, title, color, x_label, y_label, bins):
+    """
+    Creates a histogram.
+    """
+
+    plt.rcParams.update(params)
+    plt.figure(figsize=(10, 6))
+
+    sns.histplot(data[column], color=color, bins=bins, edgecolor="k")
+    plt.title(title)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
     plt.tight_layout()
 
     plt.show()
@@ -467,7 +484,7 @@ def label_encoder(data, data_type):
 
 def spearman_correlation(data, target):
     """
-    Calculate and display Spearman rank correlation between features and target in a given dataset.
+    Calculates and display Spearman rank correlation between features and target in a given dataset.
     """
 
     from scipy.stats import spearmanr
@@ -493,7 +510,7 @@ def spearman_correlation(data, target):
 
 def shape_of_data(data):
     """
-    Prints the number of datapoints and features in the DataFrame.
+    Displays the number of datapoints and features in the DataFrame.
     """
 
     print("Number of datapoints:", data.shape[0])
@@ -502,7 +519,7 @@ def shape_of_data(data):
 
 def reduce_memory_usage(df):
     """
-    Reduce memory usage of a DataFrame by downcasting numeric types and converting object types to categorical.
+    Reduces memory usage of a DataFrame by downcasting numeric types and converting object types to categorical.
     """
 
     import numpy as np
@@ -548,7 +565,7 @@ def reduce_memory_usage(df):
 
 def check_columns_with_one_uniquevalue(data):
     """
-    Check for columns with just 1 unique value
+    Checks for columns with just 1 unique value
     """
 
     list_columns = []
@@ -556,3 +573,19 @@ def check_columns_with_one_uniquevalue(data):
         if len(data[col].unique()) <= 1:
             list_columns.append(col)
     return list_columns
+
+
+def scale_data(data, columns):
+    """
+    Scales specified columns.
+    """
+
+    scaler = MinMaxScaler()
+
+    scaled_data = scaler.fit_transform(data)
+    scaled_data = pd.DataFrame(
+        scaled_data,
+        columns=columns,
+    )
+
+    return scaled_data
