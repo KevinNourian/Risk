@@ -10,4 +10,9 @@ home-credit-default-risk.zip
 installments_payments.csv
 POS_CASH_balance.csv
 previous_application.csv
+train.csv
+bureau.csv
+install.csv
+previous.csv
+data.csv
 

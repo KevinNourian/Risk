@@ -503,7 +503,7 @@ def spearman_correlation(data, target):
     spearman_df = pd.DataFrame(
         spearman_scores.items(), columns=["Feature", "Spearman Correlation"]
     )
-    spearman_df = spearman_df.sort_values(by="Spearman Correlation", ascending=False)
+    spearman_df = spearman_df.sort_values(by="Spearman Correlation", ascending=True)
 
     print(spearman_df)
 
