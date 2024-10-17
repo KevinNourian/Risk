@@ -2,26 +2,27 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-with open("lgbm_pipeline.pkl", "rb") as file:
+# Load the model
+with open("model.pkl", "rb") as file:
     model = pickle.load(file)
 
-
+# Streamlit app title
 st.title("Default Prediction")
 
-
+# Input fields (only three features)
 age = st.number_input("Enter Age", min_value=0, max_value=120, value=25)
 annuity = st.number_input("Enter Annuity", min_value=0, max_value=100000, value=10000)
 num_loans = st.number_input(
     "Enter Number of Loans", min_value=0, max_value=100, value=10
 )
 
-
-total_debit = 100000
-total_credit_amt = 250000
+# Default values for other features not included in the UI
+total_debit = 50000  # Example default value
+total_credit_amt = 250000  # Example default value
 ext_source_1 = 0.5
 ext_source_2 = 0.5
 ext_source_3 = 0.5
-ext_source_mean = 0.5
+ext_source_mean = (ext_source_1 + ext_source_2 + ext_source_3) / 3
 annual_payment_to_credit_ratio = 0.3
 years_id_publish = 10
 goods_price = 100000
@@ -29,7 +30,8 @@ annuity_to_income_ratio = 0.4
 organization_type = "Self-employed"
 years_registration = 5
 years_last_phone_change = 3
-years_employed_age_product = 540
+years_employed = 15
+years_employed_age_product = age * years_employed
 income_to_age_ratio = 0.6
 region_population_relative = 0.1
 total_num_months = 60
@@ -58,18 +60,17 @@ sum_amt_payment = 21000
 avg_amt_payment = 5000
 max_amt_payment = 6000
 min_amt_payment = 4000
-annuity_to_credit_ratio = 5000
-sum_amt_payment_sum_amt_instalment = 100000
-mean_amt_payment_mean_amt_instalment = 500000
+sum_amt_payment_sum_amt_instalment = sum_amt_payment / sum_amt_instalment
+mean_amt_payment_mean_amt_instalment = avg_amt_payment - avg_amt_instalment
 
 # Prediction logic
 if st.button("Predict"):
     input_data = pd.DataFrame(
         {
-            "AGE": [age],
+            "Age": [age],
             "AMT_ANNUITY": [annuity],
-            "ANNUITY_TO_CREDIT_RATIO": [annuity_to_credit_ratio],
             "NUM_LOANS": [num_loans],
+            # Default values for other features
             "TOTAL_DEBIT": [total_debit],
             "TOTAL_CREDIT_AMT": [total_credit_amt],
             "EXT_SOURCE_1": [ext_source_1],
@@ -119,7 +120,9 @@ if st.button("Predict"):
         }
     )
 
+    # Make prediction
     prediction = model.predict(input_data)
 
+    # Show result
     default_result = "YES" if prediction[0] == 1 else "NO"
     st.write(f"Default: {default_result}")
