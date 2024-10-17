@@ -2,13 +2,14 @@ import streamlit as st
 import pickle
 import pandas as pd
 
+# Load the model
 with open("model.pkl", "rb") as file:
     model = pickle.load(file)
 
-
+# Streamlit app title
 st.title("Default Prediction")
 
-
+# Input fields
 age = st.number_input("Enter Age", min_value=0, max_value=120, value=25)
 annuity = st.number_input("Enter Annuity", min_value=0, max_value=100000, value=10000)
 num_loans = st.number_input(
@@ -208,10 +209,6 @@ if st.button("Predict"):
             ],
         }
     )
-
-    st.write(model.n_features_)
-    st.write(model.feature_name_)
-    st.write(input_data.shape)
 
     # Make prediction
     prediction = model.predict(input_data)
