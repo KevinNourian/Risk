@@ -1,4 +1,4 @@
-![Alt_Text](https://github.com/TuringCollegeSubmissions/knouri-ML.3/blob/main/Images/Titanic.PNG)
+![Alt_Text](https://github.com/KevinNourian/Risk/blob/main/Images/risk.png)
 # Project Files
 **1.0 Overview:** This notebook familiarizes the reader with the goals, standards, biases and the basic characteristics of the data. </BR>
 **2.0 Pre-Processing:** In this notebook, I cleaned the data to get it ready for the later parts of the project by removing inaccurate entries, infinity values, and features with just one value. I converted features with number of days to number of years</BR>
