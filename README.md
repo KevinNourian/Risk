@@ -2,9 +2,9 @@
 # Project Files
 **1.0 Overview:** This notebook familiarizes the reader with the goals, standards, biases and the basic characteristics of the data. </BR>
 **2.0 Pre-Processing:** In this notebook, I cleaned the data to get it ready for the later parts of the project by removing inaccurate entries, infinity values, and features with just one value. I converted features with number of days to number of years</BR>
-**3.0 EDA:** In this part of the project, I visually display interesting insights from the data in the main application_train table./BR>
-**4.0 FeatureEngineering:** In this notebook, I utilized the existing features to create new features that proved to have much higher predictive value than the original features. </BR>
-**5.0 MachineLearning Iterations:** In this part of the project, I utilized LightGBM's feature importance tool to identify the features with the most predictive power. With this tool, I identified 18 features with acceptable predictive values.</BR>
+**3.0 EDA:** In this part of the project, I visually display interesting insights from the data in the main application_train table.</BR>
+**4.0 Feature Engineering:** In this notebook, I utilized the existing features to create new features that proved to have much higher predictive value than the original features. </BR>
+**5.0 Machine Learning Iterations:** In this part of the project, I utilized LightGBM's feature importance tool to identify the features with the most predictive power. With this tool, I identified 18 features with acceptable predictive values.</BR>
 **6.0 Bureau:** In this notebook, I aggregated features in the bureau and bureau-balance tables and merged them into a table I called simply bureau. Through the aggregation new features were created that I later merged with the main application_train table. </BR>
 **7.0 Previous:** In this part of the project, I aggregated features in the previous_payments table that I will merge with the main application_train table. The new aggregated features will prove to have good predictive capabilities.</BR>
 **8.0 Installments:** In this notebook, I aggregated features in the installments_payments table that I will merge with the main application_train table. The new aggregated features will prove to have good predictive capabilities.</BR>
@@ -21,17 +21,17 @@ Risk management involves the identification, assessment, measurement, and manage
 # Datasets
 **1. application_{train|test}:** This is the main table, broken into two files for Train (with TARGET) and Test(without TARGET).Static data for all applications. One row represents one loan in our datasample. </BR>
 **2. bureau:** All client's previous credits provided by other financial institutions that were reported to Credit Bureau (for clients who have a loan in our sample). For every loan in our sample, there are as many rows as number of credits theclient had in Credit Bureau before the application date. </BR>
-**3. bureau_balance:** Monthly balances of previous credits in Credit Bureau. This table has one row for each month of history of every previous creditreported to Credit Bureau – i.e the table has (#loans in sample * # of relativeprevious credits * # of months where we have some history observable for theprevious credits) rows. </BR>
-**4. POS_CASH_balance:** Monthly balance snapshots of previous POS (point of sales) and cash loans thatthe applicant had with Home Credit. This table has one row for each month of history of every previous credit in Home Credit (consumer credit and cash loans) related to loans in our sample –i.e. the table has (#loans in sample * # of relative previous credits * # ofmonths in which we have some history observable for the previous credits) rows.</BR>
-**5. credit_card_balance:** Monthly balance snapshots of previous credit cards that the applicant has with Home Credit. This table has one row for each month of history of every previous credit inHome Credit (consumer credit and cash loans) related to loans in our sample –i.e. the table has (#loans in sample * # of relative previous credit cards * #of months where we have some history observable for the previous credit card)rows.</BR>
+**3. bureau_balance:** Monthly balances of previous credits in Credit Bureau. The table has one row for each month of history for every previous creditreported to Credit Bureau – i.e the table has (#loans in sample * # of relativeprevious credits * # of months where we have some history observable for theprevious credits) rows. </BR>
+**4. POS_CASH_balance:** Monthly balance snapshots of previous POS (point of sale) and cash loans that the applicant had with Home Credit. This table has one row for each month of history of every previous credit in Home Credit (consumer credit and cash loans) related to loans in our sample –i.e. the table has (#loans in sample * # of relative previous credits * # ofmonths in which we have some history observable for the previous credits) rows.</BR>
+**5. credit_card_balance:** Monthly balance snapshots of previous credit cards that the applicant has with Home Credit. The table has one row for each month in the history of every previous credit inHome Credit (consumer credit and cash loans) related to loans in our sample –i.e. the table has (#loans in sample * # of relative previous credit cards * #of months where we have some history observable for the previous credit card)rows.</BR>
 **6. previous_application:** All previous applications for Home Credit loans of clients who have loans in our sample. There is one row for each previous application related to loans in our datasample.</BR>
-**7. installments_payments:** Repayment history for the previously disbursed credits in Home Credit related tothe loans in our sample. There is a) one row for every payment that was made plus b) one row each formissed payment. One row is equivalent to one payment of one installment OR one installmentcorresponding to one payment of one previous Home Credit credit related to loansin our sample.</BR>
+**7. installments_payments:** Repayment history for the previously disbursed credits in Home Credit related to the loans in our sample. There is a) one row for every payment that was made plus b) one row each formissed payment. One row is equivalent to one payment of one installment OR one installmentcorresponding to one payment of one previous Home Credit credit related to loansin our sample.</BR>
 **8. HomeCredit_columns_description:** This file contains descriptions for the columns in the various data files.
 
 
 # Goals
 **Interpretability:**  Since this project is aimed at an industry where transparency is crucial, my goal is to make predictions with as few features as possible so they can be explained to both stakeholders and clients in an easy and clear manner.  </BR>
-**Error Rate:** The cost of making an error can be very high. This is due to the large amounts of funds associated with each loan. We do not want the model to miss out on potential defaulters which could incur huge financial losses. My second goal is to precit defaulters with a ROC AUC score of 75% or higher.
+**Error Rate:** The cost of making an error can be very high. This is due to the large amounts of funds associated with each loan. We do not want the model to miss out on potential defaulters which could incur huge financial losses. My second goal is to predict defaults with a ROC AUC score of 75% or higher.
 
 
 # Technical Requirements
@@ -45,7 +45,7 @@ Risk management involves the identification, assessment, measurement, and manage
 
 # Standards
 > **Standard 1:** My standard for an acceptable ROC AUC is 75%. <BR>
-> **Standard 2:** My standard for colinnearity is a Pearson correlation coefficient of approximately 80%. <BR>  
+> **Standard 2:** My standard for colinearity is a Pearson correlation coefficient of approximately 80%. <BR> 
 
 
 # Biases
@@ -53,11 +53,11 @@ There could be many hidden biases in the way the data is collected, which is not
 
 
 # Domain Knowledge
-I have no experience with space travel or alternate dimensions. I may have overlooked parts of the data that may have been most important and I may have given importance to parts that may have had little significance. 
+I have no experience with financial data. I may have overlooked parts of the data that may have been most important and I may have given importance to parts that may have had little significance. 
 
 
 # Conclusions
->* **The Analysis of the Data:** I reviewed approximately 50,000,000 datapoints in 5 tables related to clients in the Home Credit Default Risk Assessment dataset. <br> 
+>* **The Analysis of the Data:*** I reviewed approximately 50,000,000 datapoints in 5 tables related to clients in the Home Credit Default Risk Assessment dataset. <br> 
 >* **The Goal of the Project:** The goal of this project was to find a model that could predict if a client will default on a loan. I further wanted to make this determination with as few feature and in the most transparent manner possible.<br>
 >* **Missing Data:** There was a great deal of missing data in many of the features. I imputed this missing data by assigning a random number to the numerical columns and labeling missing categorical data with the text, "UNKNOWN"."  <br>
 >* **Models:** I utilized the following models: Logistic Regression, Random Forest, Light Gradient Boosting Machine (LGBM).
