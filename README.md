@@ -11,9 +11,9 @@
 **9.0 Hypothesis Tests:** In this part of the project, I conducted two important hypothesis tests, one related to income type and the other related to credit amount.</BR>
 **10.0 Final Table:** In this part of the project, I merged 4 tables created in other parts of this project into one table to be ready for final modeling in Notebook 11.0.</BR>
 **11.0 Final Modeling:** In this part of the project, I compared three models: Logistic Regression, Random Forest and LightGBM and compared their performance using ROC-AUC socres. LightGBM performed better than the other two models. I used Optuna for hyperparameter tuning of the LightGBM model and increaed performance slightly.</BR>
-**12.0 Conclusions:** This notebook summarizes the conclusions that may be drawn from this report. It also outlines weaknesses and avenues for improvement.
-**13.0 Deployment:** This notebook contains the link for the web application used for deployment.
-**streamlit.py:** This code was used to deploy the model using the Streamlit application.
+**12.0 Conclusions:** This notebook summarizes the conclusions that may be drawn from this report. It also outlines weaknesses and avenues for improvement.</BR>
+**13.0 Deployment:** This notebook contains the link for the web application used for deployment.</BR>
+**streamlit.py:** This code was used to deploy the model using the Streamlit application.</BR>
 
 # Introduction
 Risk management involves the identification, assessment, measurement, and management of potential risks. In the financial sector, investors take on risks with the expectation of receiving higher economic returns as compensation. This project will explore loan repayment rates as a key aspect of credit risk management. Specifically, we will examine the possibility of nonpayment, whether it pertains to future obligations or ongoing transactions.
