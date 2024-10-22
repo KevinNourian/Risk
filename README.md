@@ -57,15 +57,16 @@ I have no experience with financial data. I may have overlooked parts of the dat
 
 
 # Conclusions
->* **The Analysis of the Data:*** I reviewed approximately 50,000,000 datapoints in 5 tables related to clients in the Home Credit Default Risk Assessment dataset. <br> 
+>* **The Analysis of the Data:** I reviewed approximately 50,000,000 datapoints in 5 tables related to clients in the Home Credit Default Risk Assessment dataset. <br> 
 >* **The Goal of the Project:** The goal of this project was to find a model that could predict if a client will default on a loan. I further wanted to make this determination with as few feature and in the most transparent manner possible.<br>
 >* **Missing Data:** There was a great deal of missing data in many of the features. I imputed this missing data by assigning a random number to the numerical columns and labeling missing categorical data with the text, "UNKNOWN"."  <br>
 >* **Models:** I utilized the following models: Logistic Regression, Random Forest, Light Gradient Boosting Machine (LGBM).
->* **Logistic Regression:** Best ROC-AUC Score: 0.69.  <br>
->* **Random Forest:** Best ROC-AUC Score: 0.72.   <br>
->* **Light Gradient Boosting (LGBM):** Best ROC-AUC Score: 0.75.   <br>
->* **Final Model (LGBM):** I used LGBM as my final model.<br>
+>* **Logistic Regression:** ROC-AUC Score: 0.63.  <br>
+>* **Random Forest:** ROC-AUC Score: 0.73.   <br>
+>* **XGBClassifier:** ROC-AUC Score: 0.72.   <br>
+>* **Light Gradient Boosting (LGBM):** OC-AUC Score: 0.74.   <br>
 >* **OPTUNA:** I used OPTUNA to tune the hyperparameters of the LGBM model. <br>
+>* **Final Model (LGBM) with Hyperparameter Tuning:** ROC-AUC Score: 0.77.<br>
 
 
 # Suggestions for Improvement
