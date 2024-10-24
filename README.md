@@ -1,19 +1,21 @@
 ![Alt_Text](https://github.com/KevinNourian/Risk/blob/main/Images/risk.png)
 # Project Files
 **1.0 Overview:** This notebook familiarizes the reader with the goals, standards, biases and the basic characteristics of the data. </BR>
-**2.0 Pre-Processing:** In this notebook, I cleaned the data to get it ready for the later parts of the project by removing inaccurate entries, infinity values, and features with just one value. I converted features with number of days to number of years</BR>
+**2.0 Pre-Processing:** I cleaned the data to get it ready for the later parts of the project by removing inaccurate entries, infinity values, and features with just one value. I converted features with number of days to number of years</BR>
 **3.0 EDA:** In this part of the project, I visually display interesting insights from the data in the main application_train table.</BR>
-**4.0 Feature Engineering:** In this notebook, I utilized the existing features to create new features that proved to have much higher predictive value than the original features. </BR>
-**5.0 Machine Learning Iterations:** In this part of the project, I utilized LightGBM's feature importance tool to identify the features with the most predictive power. With this tool, I identified 18 features with acceptable predictive values.</BR>
+**4.0 Feature Engineering:** I utilized the existing features to create new features that proved to have much higher predictive value than the original features. </BR>
+**5.0 Machine Learning Iterations:** I utilized LightGBM's feature importance tool to identify the features with the most predictive power. With this tool, I identified 18 features with acceptable predictive values.</BR>
 **6.0 Bureau:** In this notebook, I aggregated features in the bureau and bureau-balance tables and merged them into a table I called simply bureau. Through the aggregation new features were created that I later merged with the main application_train table. </BR>
-**7.0 Previous:** In this part of the project, I aggregated features in the previous_payments table that I will merge with the main application_train table. The new aggregated features will prove to have good predictive capabilities.</BR>
-**8.0 Installments:** In this notebook, I aggregated features in the installments_payments table that I will merge with the main application_train table. The new aggregated features will prove to have good predictive capabilities.</BR>
-**9.0 Hypothesis Tests:** In this part of the project, I conducted two important hypothesis tests, one related to income type and the other related to credit amount.</BR>
-**10.0 Final Table:** In this part of the project, I merged 4 tables created in other parts of this project into one table to be ready for final modeling in Notebook 11.0.</BR>
-**11.0 Final Modeling:** In this part of the project, I compared three models: Logistic Regression, Random Forest and LightGBM and compared their performance using ROC-AUC socres. LightGBM performed better than the other two models. I used Optuna for hyperparameter tuning of the LightGBM model and increaed performance slightly.</BR>
+**7.0 Previous:** I aggregated features in the previous_payments table that I will merge with the main application_train table. The new aggregated features will prove to have good predictive capabilities.</BR>
+**8.0 Installments:** I aggregated features in the installments_payments table that I will merge with the main application_train table. The new aggregated features will prove to have good predictive capabilities.</BR>
+**9.0 Hypothesis Tests:** I conducted two important hypothesis tests, one related to income type and the other related to credit amount.</BR>
+**10.0 Final Table:** I merged 4 tables created in other parts of this project into one table to be ready for final modeling in Notebook 11.0.</BR>
+**11.0 Final Modeling:** I compared four models: Logistic Regression, Random Forest, XGBClassifier, and LightGBM. I ompared their performance using ROC-AUC socres. LightGBM performed better than the other two models. I used Optuna for hyperparameter tuning of the LightGBM model and increaed performance by 3%.</BR>
 **12.0 Conclusions:** This notebook summarizes the conclusions that may be drawn from this report. It also outlines weaknesses and avenues for improvement.</BR>
 **13.0 Deployment:** This notebook contains the link for the web application used for deployment.</BR>
 **streamlit.py:** This code was used to deploy the model using the Streamlit application.</BR>
+**functions.py:** This is a file that contains the code for functions I used in this project. </BR>
+**requirements.txt:** This file contains a list of the packages used in this project. </BR>
 
 # Introduction
 Risk management involves the identification, assessment, measurement, and management of potential risks. In the financial sector, investors take on risks with the expectation of receiving higher economic returns as compensation. This project will explore loan repayment rates as a key aspect of credit risk management. Specifically, we will examine the possibility of nonpayment, whether it pertains to future obligations or ongoing transactions.
