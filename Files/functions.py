@@ -93,26 +93,6 @@ def outliers(data):
     print(outlier_counts)
 
 
-def passenger_distribution(data, feature, Boolean):
-    transported = data[data["Transported"] == Boolean]
-    transported_feature = transported[feature].value_counts()
-
-    transported_feature_true = transported_feature.get(1, 0)
-    transported_feature_false = transported_feature.get(0, 0)
-
-    return transported_feature_true, transported_feature_false
-
-
-def log_transform(data, col):
-    """
-    Applies a log transformation (log1p) to the specified column in the DataFrame.
-    """
-
-    data[col] = np.log1p(data[col])
-
-    return data
-
-
 def countplot(data, x, hue, palette, order, title, x_label, y_label, legend_title):
     """
     Creates a count plot with customized appearance including axis labels, title, and legend.
